@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+            integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div id="toast">
+            <!-- Success -->
+        </div>
+        <div>
+            <div
+                onclick="showSuccessToast();"
+                style="padding: 2px; display: inline; border: 1px solid green"
+            >
+                Show Suscces
+            </div>
+        </div>
+        <script>
+            // Toast function
+            function toast({
+                title = "",
+                message = "",
+                type = "info",
+                duration = 2000,
+            }) {
+                const main = document.querySelector("#toast");
+                if (main) {
+                    const toast = document.createElement("div");
+                    // auto remove toast
+                    const autoRemove = setTimeout(() => {
+                        main.removeChild(toast);
+                    }, duration + 1000);
+
+                    // click remove toast
+                    toast.onclick = function (e) {
+                        if (e.target.closest(".toast__close")) {
+                            main.removeChild(toast);
+                            clearTimeout(autoRemove);
+                        }
+                    };
+                    toast.classList.add("toast");
+                    toast.style.animation = `slideInLeft ease 0.3s, fadeOut linear 1s ${duration}ms forwards`;
+                    toast.innerHTML = ` <div class="toast__icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="toast__body">
+                    <h3 class="toast__title">${title}</h3>
+                    <p class="toast__msg">
+                        ${message}
+                    </p>
+                </div>
+                <div class="toast__close">
+                    <i class="fas fa-times"></i>
+                </div>`;
+                    main.appendChild(toast);
+                }
+            }
+
+            function showSuccessToast() {
+                toast({
+                    title: "Success",
+                    message:
+                        "Lorem ipsum dolor sit amet consectetur adipisicing elit Nemo velit?",
+                    type: "suscces",
+                    duration: 4000,
+                });
+            }
+        </script>
+        <script type="module" src="2.ES6.js"></script>
+    </body>
+</html>

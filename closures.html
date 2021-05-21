@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            function celebrityIDCreator(theCelebrities) {
+                var i;
+                var uniqueID = 100;
+                for (i = 0; i < theCelebrities.length; i++) {
+                    console.log(i);
+                    // vòng for chạy xong thì nó chỉ gán theCelebrities[i]['id'] bằng 1 function
+                    // khi gọi tới nó thì nó truy cập lại vào biến i (for đã chạy xong) dù hàm cha đã return
+                    // lúc đó i = 3 nên tất cả id đều là 103
+                    theCelebrities[i]["id"] = function () {
+                        console.log(i);
+                        return uniqueID + i;
+                    };
+                }
+
+                return theCelebrities;
+            }
+
+            var actionCelebs = [
+                { name: "Stallone", id: 0 },
+                { name: "Cruise", id: 0 },
+                { name: "Willis", id: 0 },
+            ];
+
+            var createIdForActionCelebs = celebrityIDCreator(actionCelebs);
+
+            var stalloneID = createIdForActionCelebs[0];
+            console.log(stalloneID.id()); // 103
+        </script>
+    </body>
+</html>

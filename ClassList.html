@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .red {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <h1>class list</h1>
+        </div>
+        <script>
+            /* 
+            add: them class
+            contains: kiem tra class co hay khong
+            remove: xoa bo
+            toggle: neu co thi xoa, k thi nguoc lai
+             */
+
+            let boxElement = document.querySelector(".box");
+
+            boxElement.classList.add("red", "blue");
+            console.log(boxElement.classList.contains("red"));
+
+            // setInterval(() => {
+            //     boxElement.classList.remove("red");
+            // }, 1000);
+            setInterval(() => {
+                boxElement.classList.toggle("red");
+            }, 1000);
+            // setInterval(() => {
+            //     boxElement.classList.add("red");
+            // }, 2000);
+        </script>
+    </body>
+</html>

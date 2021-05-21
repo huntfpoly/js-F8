@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ForEach</title>
+    </head>
+    <body>
+        <script>
+            let courses = ["js", "php", "html"];
+            Array.prototype.forEach2 = function (callback) {
+                for (let index in this) {
+                    /* hasOwnProperty kiem tra phuong thuc tao ra trong proto */
+                    if (this.hasOwnProperty(index)) {
+                        callback(this[index], index, this);
+                    }
+                }
+            };
+            courses.forEach2((course, index) => {
+                console.log(course, index);
+            });
+            console.log();
+        </script>
+    </body>
+</html>

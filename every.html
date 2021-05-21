@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>every</title>
+    </head>
+    <body>
+        <script>
+            let courses = [
+                {
+                    name: "js",
+                    coin: 100,
+                    isFinish: true,
+                },
+                {
+                    name: "php",
+                    coin: 200,
+                    isFinish: false,
+                },
+            ];
+            Array.prototype.every2 = function (callback) {
+                let output = true;
+                for (let index in this) {
+                    /* hasOwnProperty kiem tra phuong thuc tao ra trong proto */
+                    if (this.hasOwnProperty(index)) {
+                        if (!callback(this[index], index)) {
+                            output = false;
+                            break;
+                        }
+                    }
+                }
+                return output;
+            };
+
+            let a = courses.every2((course, index) => {
+                return course.isFinish;
+            });
+            console.log(a);
+        </script>
+    </body>
+</html>

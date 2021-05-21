@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Map</title>
+    </head>
+    <body>
+        <script>
+            let courses = [
+                {
+                    name: "js",
+                    coin: 100,
+                },
+                {
+                    name: "php",
+                    coin: 200,
+                },
+            ];
+            Array.prototype.filter2 = function (callback) {
+                let output = [];
+                for (let index in this) {
+                    /* hasOwnProperty kiem tra phuong thuc tao ra trong proto */
+                    if (this.hasOwnProperty(index)) {
+                        let result = callback(this[index], index);
+                        if (result) {
+                            output.push(this[index]);
+                        }
+                    }
+                }
+                return output;
+            };
+
+            let a = courses.filter2((course, index) => {
+                return course.coin > 100;
+            });
+            console.log(a);
+        </script>
+    </body>
+</html>
