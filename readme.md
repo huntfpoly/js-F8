@@ -195,9 +195,31 @@ console.log(tesla.color);
 
 ## Decorator Pattern
 
-```
-Decorator pattern được sử dụng để mở rộng chức năng của một object mà không làm thay đổi class hiện tại hay hàm tạo. Pattern này có thể được sử dụng để thêm feature mới vào object.
+-   Decorator pattern được sử dụng để mở rộng chức năng của một object mà không làm thay đổi class hiện tại hay hàm tạo. Pattern này có thể được sử dụng để thêm feature mới vào object.
 
-```
+```javascript
+class Car {
+    constructor() {
+        // Default Cost
+        this.cost = function () {
+            return 20000;
+        };
+    }
+}
 
-{@gist: https://gist.github.com/huntfpoly/ea77863d3e1b808abea14d8094e7f0c5}
+// Decorator function
+function carWithAC(car) {
+    car.hasAC = true;
+    const prevCost = car.cost();
+    car.cost = function () {
+        return prevCost + 500;
+    };
+}
+const car = new Car();
+
+// Prints 20000
+console.log(car.cost());
+carWithAC(car);
+// Prints 20500
+console.log(car.cost());
+```
