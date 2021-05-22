@@ -160,3 +160,44 @@ console.log(car);
 // Prints Truck {doors: 2, state: "used", color: "white"}
 console.log(truck);
 ```
+
+## Decorator Pattern
+
+-   Decorator pattern được sử dụng để mở rộng chức năng của một object mà không làm thay đổi class hiện tại hay hàm tạo. Pattern này có thể được sử dụng để thêm feature mới vào object
+
+```
+function Car(name) {
+    this.name = name;
+
+    // Default values
+    this.color = 'White';
+}
+
+// Creating a new Object to decorate
+const tesla = new Car('Tesla Model 3');
+
+// Decorating the object with new functionality
+
+tesla.setColor = function(color) {
+    this.color = color;
+}
+
+tesla.setPrice = function(price) {
+    this.price = price;
+}
+
+tesla.setColor('black');
+tesla.setPrice(49000);
+
+// Prints blank
+console.log(tesla.color);
+```
+
+## Decorator Pattern
+
+```
+Decorator pattern được sử dụng để mở rộng chức năng của một object mà không làm thay đổi class hiện tại hay hàm tạo. Pattern này có thể được sử dụng để thêm feature mới vào object.
+
+```
+
+{@gist: https://gist.github.com/huntfpoly/ea77863d3e1b808abea14d8094e7f0c5}
